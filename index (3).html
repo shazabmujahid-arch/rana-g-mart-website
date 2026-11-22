@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rana G Mart | Fashion, Watches, Shoes & Lifestyle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fbf8f6;
+      --surface: #ffffff;
+      --ink: #1a1517;
+      --muted: #6e6367;
+      --rose: #b8445f;
+      --rose-dark: #8f2d44;
+      --rose-soft: #fdf1f4;
+      --gold: #c99652;
+      --border: #ede4e1;
+      --shadow: 0 14px 34px rgba(26, 21, 23, 0.06);
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    /* Top Announcement Bar */
+    .topbar {
+      background: linear-gradient(90deg, #1a1517, #3a1b25, #1a1517);
+      color: #fff;
+      font-size: 12px;
+      letter-spacing: 0.7px;
+      padding: 9px 14px;
+      text-align: center;
+      font-weight: 500;
+    }
+    .topbar span { color: var(--gold); font-weight: 700; }
+
+    /* Header & Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-main {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      text-decoration: none;
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+    .brand-sub {
+      font-size: 10px;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .search-wrap {
+      flex: 1;
+      min-width: 210px;
+      max-width: 440px;
+      position: relative;
+    }
+    .search-wrap input {
+      width: 100%;
+      padding: 10px 16px 10px 38px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      transition: 0.2s;
+    }
+    .search-wrap input:focus {
+      border-color: var(--rose);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(184, 68, 95, 0.12);
+    }
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .bag-btn {
+      background: var(--ink);
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s;
+    }
+    .bag-btn:hover { background: var(--rose); }
+    .bag-badge {
+      background: var(--gold);
+      color: #1a1517;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 1px 7px;
+      border-radius: 999px;
+    }
+
+    /* Quick Category Strip */
+    .cat-strip {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 8px 18px 12px;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .cat-strip::-webkit-scrollbar { display: none; }
+
+    .cat-pill {
+      white-space: nowrap;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--ink);
+      padding: 7px 15px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .cat-pill:hover, .cat-pill.active {
+      background: var(--rose);
+      color: #fff;
+      border-color: var(--rose);
+    }
+
+    /* Hero Section */
+    .hero {
+      max-width: 1220px;
+      margin: 22px auto 0;
+      padding: 0 18px;
+    }
+    .hero-box {
+      background: linear-gradient(130deg, #1f1418 0%, #4a202f 52%, #85354c 100%);
+      color: #fff;
+      border-radius: 26px;
+      padding: 44px 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      gap: 16px;
+    }
+    .hero-box::before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: -70px;
+      top: -70px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,150,82,0.35), transparent 70%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      display: inline-block;
+      width: fit-content;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: #ffe8d6;
+      letter-spacing: 0.5px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 5vw, 50px);
+      line-height: 1.14;
+      max-width: 680px;
+    }
+    .hero h1 em {
+      color: #f5cfa0;
+      font-style: italic;
+    }
+    .hero p {
+      color: #f2e4e8;
+      max-width: 560px;
+      font-size: 15px;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: #1a1517;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-glass {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.35);
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    /* Trust Features Bar */
+    .trust-bar {
+      max-width: 1220px;
+      margin: 20px auto 0;
+      padding: 0 18px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+    }
+    .trust-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .trust-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: var(--rose-soft);
+      color: var(--rose);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .trust-card h4 { font-size: 13px; font-weight: 700; }
+    .trust-card p { font-size: 12px; color: var(--muted); }
+
+    /* Category Sections (Alag Alag Portions) */
+    .main-wrap {
+      max-width: 1220px;
+      margin: 34px auto;
+      padding: 0 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 44px;
+    }
+
+    .cat-section {
+      scroll-margin-top: 130px;
+    }
+
+    .sec-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .sec-kicker {
+      font-size: 11px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .sec-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+    .sec-count {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 40px rgba(26, 21, 23, 0.11);
+    }
+
+    .thumb {
+      aspect-ratio: 1 / 1;
+      background: #f3eae7;
+      position: relative;
+      overflow: hidden;
+    }
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+    .card:hover .thumb img {
+      transform: scale(1.05);
+    }
+
+    .tag-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(255, 255, 255, 0.94);
+      color: var(--rose-dark);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .card-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+    .card-cat {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .card-desc {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .card-footer {
+      margin-top: auto;
+      padding-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .price-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+    .price {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--rose-dark);
+    }
+    .old-price {
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 6px;
+    }
+    .add-btn {
+      background: var(--ink);
+      color: #fff;
+      border: none;
+      padding: 9px 13px;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .add-btn:hover { background: var(--rose); }
+
+    .direct-wa {
+      background: #e9f9ef;
+      color: #15803d;
+      border: 1px solid #bbf7d0;
+      padding: 9px 11px;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .direct-wa:hover {
+      background: #1ea952;
+      color: #fff;
+    }
+
+    /* Shopping Bag Drawer */
+    .backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 12, 13, 0.52);
+      display: none;
+      justify-content: flex-end;
+      z-index: 80;
+    }
+    .backdrop.open { display: flex; }
+
+    .drawer {
+      width: 100%;
+      max-width: 400px;
+      background: #fff;
+      height: 100%;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .drawer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .drawer-items {
+      flex: 1;
+      overflow-y: auto;
+      margin: 14px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .bag-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 14px;
+    }
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .qty-btn {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .cust-input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 13px;
+      margin-bottom: 8px;
+      outline: none;
+    }
+    .cust-input:focus { border-color: var(--rose); }
+
+    .wa-checkout {
+      width: 100%;
+      background: #1ea952;
+      color: #fff;
+      border: none;
+      padding: 13px;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .wa-checkout:hover { background: #188f44; }
+
+    /* Floating WhatsApp Button */
+    .float-wa {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #1ea952;
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 10px 25px rgba(30, 169, 82, 0.35);
+      z-index: 45;
+    }
+
+    footer {
+      background: #1a1517;
+      color: #e2d8db;
+      margin-top: 60px;
+      padding: 38px 18px;
+      text-align: center;
+    }
+    footer h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    footer p {
+      font-size: 13px;
+      color: #b5a7ac;
+      max-width: 520px;
+      margin: 0 auto 12px;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+      font-size: 13px;
+    }
+    .footer-links a { color: var(--gold); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <span>FREE DELIVERY</span> ALL OVER PAKISTAN &bull; CASH ON DELIVERY &bull; WHATSAPP: <span>0304-5400574</span>
+  </div>
+
+  <header>
+    <div class="nav-main">
+      <a href="#" class="brand">
+        <span class="brand-title">Rana G Mart</span>
+        <span class="brand-sub">Everything You Love</span>
+      </a>
+
+      <div class="search-wrap">
+        <span class="search-icon">&#128269;</span>
+        <input type="text" id="searchInput" placeholder="Search watches, shoes, dresses, cups, cosmetics..." />
+      </div>
+
+      <div class="nav-actions">
+        <button class="bag-btn" onclick="toggleBag(true)">
+          Bag <span class="bag-badge" id="bagCount">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Category Navigation Strip -->
+    <nav class="cat-strip" id="catStrip"></nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-box">
+      <span class="hero-tag">RANA G MART &bull; OFFICIAL ONLINE STORE</span>
+      <h1>Everyday shopping. <em>Made beautiful.</em></h1>
+      <p>Discover stylish clothing, comfortable footwear, luxury watches, aesthetic mugs, and beauty essentials with Cash on Delivery across Pakistan.</p>
+      <div class="hero-btns">
+        <a href="#all-portions" class="btn-gold">Explore All Categories</a>
+        <a href="https://wa.me/923045400574?text=Assalam-o-Alaikum%20Rana%20G%20Mart!" target="_blank" class="btn-glass">Chat on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust-bar">
+    <div class="trust-card">
+      <div class="trust-icon">&#10003;</div>
+      <div>
+        <h4>Cash on Delivery</h4>
+        <p>Pay safely at your doorstep</p>
+      </div>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon">&#9733;</div>
+      <div>
+        <h4>Handpicked Quality</h4>
+        <p>Checked before dispatch</p>
+      </div>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon">&#9993;</div>
+      <div>
+        <h4>Fast WhatsApp Order</h4>
+        <p>Direct confirmation on 0304-5400574</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Alag Alag Category Portions Yahan Render Honge -->
+  <main class="main-wrap" id="all-portions"></main>
+
+  <a class="float-wa" href="https://wa.me/923045400574?text=Assalam-o-Alaikum%20Rana%20G%20Mart%2C%20mujhe%20order%20karna%20hai" target="_blank">
+    WhatsApp Order
+  </a>
+
+  <!-- Shopping Bag Drawer -->
+  <div class="backdrop" id="bagDrawer" onclick="closeBackdrop(event)">
+    <div class="drawer">
+      <div class="drawer-top">
+        <h3>Your Shopping Bag</h3>
+        <button onclick="toggleBag(false)" style="border:none;background:none;font-size:22px;cursor:pointer;">&times;</button>
+      </div>
+
+      <div class="drawer-items" id="bagItems"></div>
+
+      <div>
+        <input type="text" id="custName" class="cust-input" placeholder="Aapka Naam (Optional)" />
+        <input type="text" id="custCity" class="cust-input" placeholder="Shehar aur Mukammal Address (Optional)" />
+        <div style="display:flex;justify-content:space-between;font-weight:700;font-size:16px;margin:8px 0 12px;">
+          <span>Total Amount</span>
+          <span id="bagTotal" style="color:var(--rose-dark);">Rs. 0</span>
+        </div>
+        <button class="wa-checkout" onclick="checkoutWhatsApp()">Confirm Order on WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <h3>Rana G Mart</h3>
+    <p>Fashion, Footwear, Watches, Drinkware &amp; Cosmetics Accessories &mdash; Delivered with care.</p>
+    <div class="footer-links">
+      <a href="#sec-Clothing">Clothing</a>
+      <a href="#sec-Shoes">Shoes</a>
+      <a href="#sec-Watches">Watches</a>
+      <a href="#sec-Cups">Cups &amp; Mugs</a>
+      <a href="#sec-Cosmetics">Cosmetics &amp; Accessories</a>
+    </div>
+    <p style="font-size:12px;">&copy; <span id="yr"></span> Rana G Mart &bull; WhatsApp: 0304-5400574</p>
+  </footer>
+
+  <script>
+    // =========================================================================
+    // 1. WHATSAPP NUMBER (Already Set: 03045400574)
+    // =========================================================================
+    const WHATSAPP_NUMBER = "923045400574";
+
+    // =========================================================================
+    // 2. CATEGORIES LIST (Har Category Ka Alag Portion Banega)
+    // =========================================================================
+    const CATEGORY_INFO = [
+      { key: "Clothing", title: "Ladies & Everyday Clothing", subtitle: "Fashion Collection" },
+      { key: "Shoes", title: "Stylish Footwear & Shoes", subtitle: "Step In Comfort" },
+      { key: "Watches", title: "Luxury & Casual Watches", subtitle: "Timeless Picks" },
+      { key: "Cups", title: "Aesthetic Cups & Mugs", subtitle: "Home & Gift Edit" },
+      { key: "Cosmetics", title: "Cosmetics & Beauty Accessories", subtitle: "Glow & Vanity" }
+    ];
+
+    // =========================================================================
+    // 3. PRODUCTS LIST — NAYA PRODUCT ADD KARNE KE LIYE YAHAN PASTE KAREIN
+    // =========================================================================
+    const PRODUCTS = [
+      // --- CLOTHING ---
+      {
+        id: 101,
+        name: "Pastel Embroidered Co-ord Set",
+        category: "Clothing",
+        price: 3250,
+        oldPrice: 3800,
+        tag: "Bestseller",
+        desc: "Soft breathable fabric, ready-to-wear 2-piece outfit.",
+        image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 102,
+        name: "Floral Summer Lawn Suit",
+        category: "Clothing",
+        price: 2790,
+        oldPrice: 3200,
+        tag: "New Arrival",
+        desc: "Elegant printed shirt with matching chiffon dupatta.",
+        image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=600&q=80"
+      },
+
+      // --- SHOES ---
+      {
+        id: 201,
+        name: "Velvet Pearl Comfort Loafers",
+        category: "Shoes",
+        price: 2450,
+        oldPrice: 2900,
+        tag: "Trending",
+        desc: "Cushioned sole for all-day comfort and party wear.",
+        image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 202,
+        name: "Classic Strappy Block Heels",
+        category: "Shoes",
+        price: 2890,
+        oldPrice: 3400,
+        tag: "Hot",
+        desc: "Lightweight stylish heels suitable for events & casual outings.",
+        image: "https://images.unsplash.com/photo-1518049362265-d5b2a6467637?auto=format&fit=crop&w=600&q=80"
+      },
+
+      // --- WATCHES ---
+      {
+        id: 301,
+        name: "Rose Gold Mesh Strap Watch",
+        category: "Watches",
+        price: 2150,
+        oldPrice: 2600,
+        tag: "Top Rated",
+        desc: "Magnetic stainless steel strap with minimalist dial.",
+        image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 302,
+        name: "Royal Classic Leather Watch",
+        category: "Watches",
+        price: 1950,
+        oldPrice: 2400,
+        tag: "Gift Box",
+        desc: "Slim dial design with durable soft leather strap.",
+        image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=600&q=80"
+      },
+
+      // --- CUPS ---
+      {
+        id: 401,
+        name: "Aesthetic Ceramic Coffee Mug",
+        category: "Cups",
+        price: 1250,
+        oldPrice: 1550,
+        tag: "Gift Pick",
+        desc: "Glossy finish premium ceramic mug for tea & coffee lovers.",
+        image: "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 402,
+        name: "Insulated Travel Tumbler Cup",
+        category: "Cups",
+        price: 1650,
+        oldPrice: 2000,
+        tag: "New",
+        desc: "Keeps drinks hot or cold for hours, leak-proof lid.",
+        image: "https://images.unsplash.com/photo-1577937927133-66ef06acdf18?auto=format&fit=crop&w=600&q=80"
+      },
+
+      // --- COSMETICS & ACCESSORIES ---
+      {
+        id: 501,
+        name: "Luxury Makeup Brush & Pouch Set",
+        category: "Cosmetics",
+        price: 1590,
+        oldPrice: 1990,
+        tag: "Bestseller",
+        desc: "Ultra-soft 10-piece brush kit with travel organizer pouch.",
+        image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: 502,
+        name: "Velvet Matte Lip & Glow Kit",
+        category: "Cosmetics",
+        price: 1450,
+        oldPrice: 1800,
+        tag: "Limited",
+        desc: "Long-lasting everyday shades with smooth moisturizing finish.",
+        image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=600&q=80"
+      }
+    ];
+
+    let selectedFilter = "All";
+    let bag = [];
+
+    document.getElementById("yr").textContent = new Date().getFullYear();
+
+    function renderTopCategories() {
+      const strip = document.getElementById("catStrip");
+      const allBtn = `<button class="cat-pill ${selectedFilter === 'All' ? 'active' : ''}" onclick="setFilter('All')">All Portions</button>`;
+      const catBtns = CATEGORY_INFO.map(c => `
+        <button class="cat-pill ${selectedFilter === c.key ? 'active' : ''}" onclick="setFilter('${c.key}')">
+          ${c.key}
+        </button>
+      `).join("");
+      strip.innerHTML = allBtn + catBtns;
+    }
+
+    function setFilter(catKey) {
+      selectedFilter = catKey;
+      renderTopCategories();
+      renderPortions();
+      if (catKey !== "All") {
+        const el = document.getElementById("sec-" + catKey);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+
+    function renderPortions() {
+      const q = document.getElementById("searchInput").value.toLowerCase().trim();
+      const container = document.getElementById("all-portions");
+
+      const visibleCategories = selectedFilter === "All"
+        ? CATEGORY_INFO
+        : CATEGORY_INFO.filter(c => c.key === selectedFilter);
+
+      let html = "";
+      let totalFound = 0;
+
+      visibleCategories.forEach(cat => {
+        const items = PRODUCTS.filter(p => {
+          const inCat = p.category === cat.key;
+          const matchQ = !q || p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q) || p.category.toLowerCase().includes(q);
+          return inCat && matchQ;
+        });
+
+        if (items.length > 0) {
+          totalFound += items.length;
+          html += `
+            <section class="cat-section" id="sec-${cat.key}">
+              <div class="sec-header">
+                <div>
+                  <span class="sec-kicker">${cat.subtitle}</span>
+                  <h2>${cat.title}</h2>
+                </div>
+                <span class="sec-count">${items.length} Item${items.length > 1 ? 's' : ''}</span>
+              </div>
+              <div class="grid">
+                ${items.map(p => `
+                  <article class="card">
+                    <div class="thumb">
+                      ${p.tag ? `<span class="tag-badge">${p.tag}</span>` : ""}
+                      <img src="${p.image}" alt="${p.name}" loading="lazy" />
+                    </div>
+                    <div class="card-body">
+                      <span class="card-cat">${p.category}</span>
+                      <h3 class="card-title">${p.name}</h3>
+                      <p class="card-desc">${p.desc || ""}</p>
+                      <div class="card-footer">
+                        <div class="price-wrap">
+                          <span class="price">Rs. ${p.price.toLocaleString()}</span>
+                          ${p.oldPrice ? `<span class="old-price">Rs. ${p.oldPrice.toLocaleString()}</span>` : ""}
+                        </div>
+                        <div class="btn-group">
+                          <button class="add-btn" onclick="addToBag(${p.id})">+ Bag</button>
+                          <button class="direct-wa" onclick="quickOrder(${p.id})">Order</button>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                `).join("")}
+              </div>
+            </section>
+          `;
+        }
+      });
+
+      if (totalFound === 0) {
+        container.innerHTML = `<div style="text-align:center;padding:40px 10px;color:var(--muted);">Koi product nahi mila. Doosra naam search karein.</div>`;
+      } else {
+        container.innerHTML = html;
+      }
+    }
+
+    function addToBag(id) {
+      const prod = PRODUCTS.find(p => p.id === id);
+      if (!prod) return;
+      const found = bag.find(i => i.id === id);
+      if (found) found.qty += 1;
+      else bag.push({ ...prod, qty: 1 });
+      updateBag();
+      toggleBag(true);
+    }
+
+    function changeQty(id, delta) {
+      const idx = bag.findIndex(i => i.id === id);
+      if (idx === -1) return;
+      bag[idx].qty += delta;
+      if (bag[idx].qty <= 0) bag.splice(idx, 1);
+      updateBag();
+    }
+
+    function updateBag() {
+      const count = bag.reduce((sum, i) => sum + i.qty, 0);
+      const total = bag.reduce((sum, i) => sum + i.price * i.qty, 0);
+      document.getElementById("bagCount").textContent = count;
+      document.getElementById("bagTotal").textContent = "Rs. " + total.toLocaleString();
+
+      const list = document.getElementById("bagItems");
+      if (!bag.length) {
+        list.innerHTML = `<p style="color:var(--muted);font-size:14px;text-align:center;margin-top:30px;">Aapka bag abhi khali hai.</p>`;
+        return;
+      }
+
+      list.innerHTML = bag.map(i => `
+        <div class="bag-item">
+          <div>
+            <strong>${i.name}</strong><br>
+            <span style="color:var(--rose-dark);font-weight:600;">Rs. ${(i.price * i.qty).toLocaleString()}</span>
+            <div class="qty-controls">
+              <button class="qty-btn" onclick="changeQty(${i.id}, -1)">-</button>
+              <span>${i.qty}</span>
+              <button class="qty-btn" onclick="changeQty(${i.id}, 1)">+</button>
+            </div>
+          </div>
+          <button onclick="changeQty(${i.id}, -999)" style="border:none;background:#fee2e2;color:#991b1b;padding:6px 10px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;">Remove</button>
+        </div>
+      `).join("");
+    }
+
+    function toggleBag(show) {
+      document.getElementById("bagDrawer").classList.toggle("open", show);
+    }
+
+    function closeBackdrop(e) {
+      if (e.target.id === "bagDrawer") toggleBag(false);
+    }
+
+    function quickOrder(id) {
+      const p = PRODUCTS.find(item => item.id === id);
+      if (!p) return;
+      const text = `Assalam-o-Alaikum Rana G Mart!%0AMujhe yeh product order karna hai:%0A%0A*${p.name}* (${p.category})%0APrice: Rs. ${p.price.toLocaleString()}%0A%0APlease confirm order.`;
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, "_blank");
+    }
+
+    function checkoutWhatsApp() {
+      if (!bag.length) {
+        alert("Pehle bag mein koi product add karein.");
+        return;
+      }
+      const cname = document.getElementById("custName").value.trim();
+      const ccity = document.getElementById("custCity").value.trim();
+
+      let text = "Assalam-o-Alaikum Rana G Mart!%0ANaya Order:%0A%0A";
+      let total = 0;
+      bag.forEach((item, idx) => {
+        const sub = item.price * item.qty;
+        total += sub;
+        text += `${idx + 1}. ${item.name} x${item.qty} = Rs. ${sub.toLocaleString()}%0A`;
+      });
+      text += `%0A*Total Bill: Rs. ${total.toLocaleString()}*`;
+      if (cname) text += `%0ANaam: ${encodeURIComponent(cname)}`;
+      if (ccity) text += `%0AAddress: ${encodeURIComponent(ccity)}`;
+
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, "_blank");
+    }
+
+    document.getElementById("searchInput").addEventListener("input", renderPortions);
+
+    renderTopCategories();
+    renderPortions();
+    updateBag();
+  </script>
+</body>
+</html>
