@@ -300,6 +300,26 @@
       gap: 10px;
     }
 
+    .policy-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .policy-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      background: rgba(212, 175, 55, 0.1);
+      color: var(--gold-light);
+    }
+    .policy-tag.sealed {
+      border-color: rgba(239, 68, 68, 0.45);
+      background: rgba(239, 68, 68, 0.12);
+      color: #fca5a5;
+    }
     .stock-badge {
       font-size: 12px;
       color: var(--success);
@@ -445,7 +465,7 @@
 <body>
 
   <div class="sale-banner" id="saleBannerText">
-    BIG LUXURY SALE LIVE — NATIONWIDE DELIVERY FROM SAHIWAL | EASYPAISA &amp; JAZZCASH ACCEPTED
+    BIG LUXURY SALE LIVE • SAHIWAL FREE HOME DELIVERY | EASYPAISA &amp; JAZZCASH ACCEPTED
   </div>
 
   <header>
@@ -511,6 +531,14 @@
         <div class="form-group">
           <label>Available Stock Quantity *</label>
           <input type="number" id="pStock" value="15" min="1" required />
+        </div>
+
+        <div class="form-group">
+          <label>Parcel Open Policy (Auto-Shown) *</label>
+          <select id="pParcelOpen">
+            <option value="Open Parcel Allowed">Open Parcel Allowed (Check Before Payment)</option>
+            <option value="Sealed Parcel (No Open)">Sealed Parcel (Open Not Allowed)</option>
+          </select>
         </div>
 
         <div class="form-group full">
@@ -680,6 +708,7 @@
         price: 2499,
         oldPrice: 3600,
         saleTag: 'BIG SALE 30% OFF',
+        parcelOpen: 'Open Parcel Allowed',
         stock: 18,
         image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80',
         desc: 'Premium navy dial wristwatch paired with brushed gold accents for formal and daily wear.',
@@ -692,6 +721,7 @@
         price: 2850,
         oldPrice: 3800,
         saleTag: 'NEW ARRIVAL',
+        parcelOpen: 'Open Parcel Allowed',
         stock: 25,
         image: 'https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=600&q=80',
         desc: 'Elegant 3-piece luxury fabric collection designed for comfort and graceful festive styling.',
@@ -704,6 +734,7 @@
         price: 1999,
         oldPrice: 2700,
         saleTag: '25% OFF',
+        parcelOpen: 'Sealed Parcel (No Open)',
         stock: 14,
         image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=600&q=80',
         desc: 'Cushioned sole footwear built for effortless all-day walking and evening occasions.',
@@ -716,6 +747,7 @@
         price: 1150,
         oldPrice: 1600,
         saleTag: 'HOT DEAL',
+        parcelOpen: 'Sealed Parcel (No Open)',
         stock: 30,
         image: 'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=600&q=80',
         desc: 'Luxury ceramic tea/coffee mug paired with everyday beauty organizer essentials.',
@@ -727,7 +759,7 @@
     let orders = JSON.parse(localStorage.getItem('rgm_orders')) || [];
     let settings = JSON.parse(localStorage.getItem('rgm_settings')) || {
       whatsapp: '923001234567',
-      banner: 'BIG LUXURY SALE LIVE — NATIONWIDE DELIVERY FROM SAHIWAL | EASYPAISA & JAZZCASH ACCEPTED',
+      banner: 'BIG LUXURY SALE LIVE • SAHIWAL FREE HOME DELIVERY | EASYPAISA & JAZZCASH ACCEPTED',
       cloudUrl: EMBEDDED_CLOUD_API_URL
     };
     if (EMBEDDED_CLOUD_API_URL && !settings.cloudUrl) {
@@ -860,6 +892,13 @@
               ${p.details}
             </div>
 
+            <div class="policy-strip">
+              <span class="policy-tag">Free Home Delivery • Sahiwal</span>
+              <span class="policy-tag ${String(p.parcelOpen || '').toLowerCase().includes('sealed') ? 'sealed' : ''}">
+                ${p.parcelOpen || 'Open Parcel Allowed'}
+              </span>
+            </div>
+
             <div class="card-footer">
               <span class="stock-badge">${Number(p.stock) > 0 ? `In Stock (${p.stock})` : 'Out of Stock'}</span>
               <button class="btn-gold" ${Number(p.stock) <= 0 ? 'disabled style="opacity:0.5;cursor:not-allowed;"' : ''} onclick="openOrderModal('${p.id}')">
@@ -917,6 +956,7 @@
         price: Number(document.getElementById('pPrice').value),
         oldPrice: document.getElementById('pOldPrice').value ? Number(document.getElementById('pOldPrice').value) : '',
         saleTag: document.getElementById('pSaleTag').value.trim(),
+        parcelOpen: document.getElementById('pParcelOpen').value,
         stock: Number(document.getElementById('pStock').value),
         image: document.getElementById('pImage').value.trim(),
         desc: document.getElementById('pDesc').value.trim(),
@@ -998,12 +1038,15 @@
       closeModal();
       renderAll();
 
+      const parcelPolicyText = p.parcelOpen || 'Open Parcel Allowed';
       const msg = `*NEW ORDER - RANA G MART*%0A` +
         `Order ID: ${orderObj.id}%0A` +
         `Product: ${p.name}%0A` +
         `Quantity: ${qty}%0A` +
         `Total: PKR ${total.toLocaleString()}%0A` +
-        `Payment: ${payment}%0A` +
+        `Payment: ${payment} (Easypaisa / JazzCash)%0A` +
+        `Delivery: Free Home Delivery (Sahiwal)%0A` +
+        `Parcel Policy: ${parcelPolicyText}%0A` +
         `Customer: ${customer}%0A` +
         `Phone: ${phone}%0A` +
         `Address: ${address}`;
